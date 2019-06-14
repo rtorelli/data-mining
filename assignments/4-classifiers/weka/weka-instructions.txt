@@ -1,0 +1,38 @@
+http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/RandomForest.html
+
+https://machinelearningmastery.com/use-ensemble-machine-learning-algorithms-weka/
+
+Start the Weka Explorer:
+
+Open the Weka GUI Chooser.
+Click the “Explorer” button to open the Weka Explorer.
+Load the Ionosphere dataset from the data/ionosphere.arff file
+Click “Classify” to open the Classify tab.
+
+Choose the bagging algorithm:
+
+Click the “Choose” button and select “Bagging” under the “meta” group.
+Click on the name of the algorithm to review the algorithm configuration.
+
+
+Bootstrap Aggregation (Bagging)
+Bootstrap Aggregation or Bagging for short is an ensemble algorithm that can be used for classification or regression.
+
+Bootstrap is a statistical estimation technique where a statistical quantity like a mean is estimated from multiple random samples of your data (with replacement). It is a useful technique when you have a limited amount of data and you are interested in a more robust estimate of a statistical quantity.
+
+This sample principle can be used with machine learning models. Multiple random samples of your training data are drawn with replacement and used to train multiple different machine learning models. Each model is then used to make a prediction and the results are averaged to give a more robust prediction.
+
+It is a technique that is best used with models that have a low bias and a high variance, meaning that the predictions they make are highly dependent on the specific data from which they were trained. The most used algorithm for bagging that fits this requirement of high variance are decision trees.
+...
+A key configuration parameter in bagging is the type of model being bagged. The default is the REPTree which is the Weka implementation of a standard decision tree, also called a Classification and Regression Tree or CART for short. This is specified in the classifier parameter.
+
+The size of each random sample is specified in the bagSizePercent, which is a size as a percentage of the raw training dataset. The default is 100% which will create a new random sample the same size as the training dataset, but will have a different composition.
+
+This is because the random sample is drawn with replacement, which means that each time an instance is randomly drawn from the training dataset and added to the sample, it is also added back into the training dataset (replaced) meaning that it can be chosen again and added twice or more times to the sample.
+
+Finally, the number of bags (and number of classifiers) can be specified in the numIterations parameter. The default is 10, although it is common to use values in the hundreds or thousands. Continue to increase the value of numIterations until you no longer see an improvement in the model, or you run out of memory.
+
+Click “OK” to close the algorithm configuration.
+Click the “Start” button to run the algorithm on the Ionosphere dataset.
+You can see that with the default configuration that bagging achieves an accuracy of 91%.
+
